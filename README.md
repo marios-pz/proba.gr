@@ -339,8 +339,6 @@ Every endpoint and form action is documented in [API.md](API.md).
 - Scheduling. `scripts/send-reminders.js` still needs a cron entry for the
   day-11 nudge. Expired ads are already reaped on every boot, and that same
   job reaps too, so the only thing waiting on a scheduler is the email.
-- Rate limiting on posting: `rate_bucket` backs view counting and report
-  deduplication, but `/post` itself is still unlimited.
 - Moderation: reports arrive by email and nothing acts on them
   automatically. There is no admin UI, so taking an ad down is still
   `delete_ad(public_id, token)` or a `delete` in psql.

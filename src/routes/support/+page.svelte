@@ -1,18 +1,20 @@
 <div class="form step veil">
 	<p class="lab">Support</p>
-	<p class="hint">No ads, no accounts, no fees. It still costs real money to keep running.</p>
+	<p class="hint">Free to use, but it does cost a bit to run</p>
 
 	<div class="prose">
 		<p>
-			Proba exists so a band's "musicians wanted" post outlives a 24 hour story and can still be
-			found, months later, by the right person in the right city. Posting an ad is free, browsing is
-			free, and there is no account and no fee to add either.
+			Proba is free. No ads, no accounts, no fees. I made it because a band looking for a drummer
+			shouldn't depend on an Instagram story that's gone in 24 hours. Here the ad stays up and
+			people nearby can actually find it.
 		</p>
 		<p>
-			Running it still has real costs: hosting, the database, the emails that verify an ad and
-			remind a band when it's about to expire. Anything given here covers that first. Whatever's
-			left over goes straight into actually supporting local bands, going to their shows, buying
-			their merch, the kind of thing this board is trying to help happen more of.
+			Running it still costs money: the database, the domain, and the emails that confirm ads and
+			remind you before they expire.
+		</p>
+		<p>
+			If you chip in, it pays for that first. Whatever's left I spend on local bands, going to their
+			gigs and buying their merch. Which is pretty much what this site is for anyway.
 		</p>
 	</div>
 

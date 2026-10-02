@@ -86,6 +86,15 @@ export const actions: Actions = {
 		if (!EMAIL.test(email))
 			return reject('The email is only used for the renewal link. It is never shown.');
 
+		// ponytail: counted off the ad rows themselves, unverified ones
+		// included. A rate_bucket window if this ever needs tuning.
+		const ipHash = hashIp(getClientAddress(), env.IP_SALT ?? 'dev');
+		const [{ n }] = (await db.execute(sql`
+			select count(*)::int as n from ad
+			where created_ip_hash = ${ipHash} and created_at > now() - interval '24 hours'
+		`)) as unknown as { n: number }[];
+		if (n >= 5) return reject('That is a lot of ads for one day. Try again tomorrow.');
+
 		const shown = jitter(lat, lng, 700);
 		// Not the edit token: that one is minted only once verify_ad()
 		// succeeds, so it never exists in plaintext before the poster has
@@ -104,7 +113,7 @@ export const actions: Actions = {
 					        ${eventAt?.toISOString() ?? null}, ${paid},
 					        ${countryCode}, ${lat}, ${lng}, ${address}, ${shown.lat}, ${shown.lng},
 					        ${email}, 'unverified', ${hashToken(verifyToken)}, now() + interval '24 hours',
-					        ${hashIp(getClientAddress(), env.IP_SALT ?? 'dev')})
+					        ${ipHash})
 					returning id
 				`)) as unknown as { id: string }[];
 
