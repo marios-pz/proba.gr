@@ -45,10 +45,19 @@ COPY test ./test
 COPY src/lib ./src/lib
 COPY static/instruments ./static/instruments
 
+# npm, corepack and yarn only come with the base image, and their bundled
+# deps are where the scanner keeps finding CVEs. Nothing at runtime needs
+# them: CMD below runs the `npm start` chain directly. apk upgrade picks up
+# Alpine fixes the base image has not been rebuilt with yet.
+RUN apk upgrade --no-cache && rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx \
+        /usr/local/bin/corepack /opt/yarn* /usr/local/bin/yarn /usr/local/bin/yarnpkg
+
 USER node
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
     CMD wget -qO- http://127.0.0.1:3000/ || exit 1
 
-CMD ["npm", "start"]
+# Same as `npm start` (prestart test -> bootstrap -> server). exec makes the
+# server PID 1, so SIGTERM from `docker stop` reaches it.
+CMD ["sh", "-c", "node --test test/*.test.ts && node scripts/bootstrap.js && exec node build/index.js"]
