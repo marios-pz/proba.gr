@@ -1,0 +1,71 @@
+name: Android
+
+# A version tag builds a signed release APK and attaches it to a GitHub
+# Release. android/ is not committed, so the native project is generated
+# fresh here, the same way `npx cap add android` does it locally.
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    name: Build and release APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install
+        run: npm ci
+
+      # The template only asks for INTERNET; the map's "near me" button
+      # needs location. versionCode has to grow on every release or Android
+      # refuses the update, so the run number drives it.
+      - name: Generate native project
+        run: |
+          npx cap add android
+          sed -i 's|<uses-permission android:name="android.permission.INTERNET" />|&\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />|' \
+            android/app/src/main/AndroidManifest.xml
+          sed -i -e "s/versionCode 1/versionCode ${{ github.run_number }}/" \
+                 -e "s/versionName \"1.0\"/versionName \"${GITHUB_REF_NAME#v}\"/" \
+            android/app/build.gradle
+          grep -q ACCESS_FINE_LOCATION android/app/src/main/AndroidManifest.xml
+
+      - name: Build
+        working-directory: android
+        run: ./gradlew assembleRelease
+
+      # Same keystore every release, or installed apps can't update.
+      - name: Sign
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+          tools="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
+          "$tools/zipalign" -p 4 android/app/build/outputs/apk/release/app-release-unsigned.apk aligned.apk
+          "$tools/apksigner" sign --ks release.jks --ks-pass env:KEYSTORE_PASSWORD \
+            --ks-key-alias "$KEY_ALIAS" --out "proba-$GITHUB_REF_NAME.apk" aligned.apk
+          "$tools/apksigner" verify "proba-$GITHUB_REF_NAME.apk"
+          rm release.jks
+
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "proba-$GITHUB_REF_NAME.apk" --generate-notes
