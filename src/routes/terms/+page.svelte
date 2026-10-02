@@ -7,134 +7,156 @@
 </script>
 
 <svelte:head>
-	<title>Terms and privacy · Proba</title>
+	<title>Terms and Privacy · Proba</title>
 	<meta name="description" content="What the rules are, what is stored, and for how long." />
 </svelte:head>
 
 <div class="form step veil">
-	<p class="lab">Terms and privacy</p>
-	<p class="hint">Last updated 22 September 2026</p>
+	<p class="lab">Terms and Privacy</p>
+	<p class="hint">Last updated: 22 September 2026</p>
 
 	<div class="prose">
 		<p>
-			Proba is a free noticeboard. I'm {OPERATOR} and I run it from Greece. A band posts what it's missing,
-			someone who plays it gets in touch. No account, no fee.
-		</p>
-		<p>
-			There are no cookies here and nothing that tracks you, which is why you never got a banner
-			asking you to accept any.
+			Proba is a free noticeboard. I am {OPERATOR}, and I run the site from Greece. The goal is
+			simple: a band posts what they need, and a musician gets in touch. No accounts, no fees.
 		</p>
 
-		<h2 id="terms" class="lab">Terms</h2>
+		<h2 id="privacy" class="lab">Privacy and Cookies</h2>
 
 		<p>
-			Post about your own band or project. Not services, not gear sales. Use a contact you actually
-			read. Don't post someone else's details, and don't post anything illegal, hateful or a scam.
-		</p>
-		<p>
-			An ad runs for 14 days. After that it's deleted rather than archived, so there's nothing left
-			to dig back up. Renewing starts the 14 days over.
-		</p>
-		<p>
-			The link in your email is the only key to your ad. Anyone holding it can edit or delete the
-			ad, so don't pass it around. If you lose it, write to me from the address you posted with and
-			I'll take the ad down.
-		</p>
-		<p>
-			I can remove any ad at any time without telling you first. In practice that means someone
-			reported it and it broke one of the rules above.
-		</p>
-		<p>
-			The ads are written by strangers and nobody vets them before they go up. Who you meet and what
-			you agree with them is on you. The board comes as is, with no warranty, and liability is
-			excluded as far as the law allows. Greek law, Greek courts.
+			This site does not use cookies or trackers. Because of that, you won't see any annoying cookie
+			banners.
 		</p>
 
-		<h2 id="stored" class="lab">What is kept, and for how long</h2>
-
-		<p>This is the whole list. If it isn't here, it isn't stored.</p>
+		<h2 id="terms" class="lab">The Rules</h2>
 
 		<dl class="keeps">
-			<dt>The ad</dt>
+			<dt>Be honest</dt>
 			<dd>
-				Band name, description, instruments, genres, commitment, country, your links. The part
-				everyone sees.
-				<b>Deleted 14 days after it goes up, unless you renew.</b>
+				Post about your own band or project. Do not use this to sell gear, offer services, or post
+				anything illegal, hateful, or scammy.
 			</dd>
 
-			<dt>Your email address</dt>
+			<dt>Be real</dt>
 			<dd>
-				So I can check the ad is yours, send you the edit link, and warn you before it expires. It's
-				never on the board and never handed to anyone.
-				<b>Deleted with the ad.</b>
+				Use a contact method you actually check. Do not post someone else’s private information.
 			</dd>
 
-			<dt>The address and its exact point</dt>
+			<dt>The 14-day rule</dt>
 			<dd>
-				The map moves your point by up to 700 metres. The real one stays in the database and is
-				never published. Close enough to find the area, not close enough to find your door.
-				<b>Deleted with the ad.</b>
+				Every ad expires and is deleted permanently after 14 days. If you renew it, the clock starts
+				over. Nothing is archived.
 			</dd>
 
-			<dt>A hashed IP address when you post</dt>
+			<dt>Your Link is your key</dt>
 			<dd>
-				So one person can't fill the whole board. It's a salted hash, the address itself is never
-				written down.
-				<b>Deleted with the ad.</b>
+				The link in your email is the only way to edit or delete your ad. Keep it private. If you
+				lose it, email me from the address you used in your ad and I will take it down for you.
 			</dd>
 
-			<dt>A hashed IP address when you look or report</dt>
+			<dt>My right to remove</dt>
 			<dd>
-				To count views, and to stop the same person reporting an ad twice. Same salted hash, nothing
-				that points back at you.
-				<b>Deleted after 30 days.</b>
+				I can take down any ad at any time without notice, usually if someone reports it for
+				breaking the rules.
 			</dd>
 
-			<dt>A report you send</dt>
+			<dt>Your responsibility</dt>
 			<dd>
-				The reason, plus whatever you typed with it, so I can judge the ad.
-				<b>Deleted with the ad it's about.</b>
-			</dd>
-
-			<dt>Your filters and a half-written ad</dt>
-			<dd>
-				So a stray refresh doesn't eat your work. This never reaches the server at all, it sits in
-				your own browser.
-				<b>Gone when you close the tab.</b>
+				I do not pre-screen anyone who posts. Who you meet and what you agree with them is your
+				responsibility. The board is provided "as is" without any warranty. Any legal disputes will
+				be handled under Greek law.
 			</dd>
 		</dl>
 
+		<h2 id="stored" class="lab">What I keep and for how long</h2>
+
+		<p>I only store the bare minimum to make the site work. Here is the list:</p>
+
+		<dl class="keeps">
+			<dt>The Public Ad</dt>
+			<dd>
+				Your band name, description, instruments, genre, commitment, country, and links.
+				<b>This is deleted 14 days after posting unless you renew.</b>
+			</dd>
+
+			<dt>Your Email</dt>
+			<dd>
+				I use this to confirm your ad, send your edit link, and remind you before your ad expires. I
+				never show this on the site or share it with anyone.
+				<b>It is deleted when your ad is.</b>
+			</dd>
+
+			<dt>Your Address</dt>
+			<dd>
+				To show you on the map, I store your real point in the database, but the public map shows a
+				point moved by up to 700 meters to protect your privacy.
+				<b>This is deleted when your ad is.</b>
+			</dd>
+
+			<dt>Anti-Spam (IP Hashes)</dt>
+			<dd>
+				When you post, I store a "hash" of your IP address (a unique code that is not your actual
+				IP) to stop people from flooding the board.
+				<b>This is deleted with your ad.</b>
+			</dd>
+
+			<dt>Views and Reports</dt>
+			<dd>
+				I store a hash of your IP when you view or report an ad to count visits and prevent double
+				reports.
+				<b>This is deleted after 30 days.</b>
+			</dd>
+
+			<dt>Your Reports</dt>
+			<dd>
+				I keep the reason and comments you provide so I can decide what to do.
+				<b>This is deleted along with the ad you reported.</b>
+			</dd>
+
+			<dt>Your Drafts and Filters</dt>
+			<dd>
+				These stay in your browser so you don't lose your work if the page refreshes. They are never
+				sent to my server and disappear when you close the tab.
+			</dd>
+
+			<dt>Your Location</dt>
+			<dd>
+				If you use the location button, your browser asks for permission. This is used only to sort
+				ads by distance and is never sent to my server.
+			</dd>
+		</dl>
+
+		<h2 id="legal" class="lab">The Legal Stuff</h2>
+
 		<p>
-			Press the location button and it's your browser asking you, not me. The coordinates stay in
-			the page to sort what's nearest and never get sent anywhere.
+			I need your ad and email to provide the service you asked for. I use hashed IPs for
+			"legitimate interest" to keep the site safe from spam.
 		</p>
+
+		<h2 id="third-parties" class="lab">Who else sees your data</h2>
+
 		<p>
-			<strong>Why I'm allowed to.</strong> Keeping your ad up is the thing you asked for. The hashed IPs
-			are a legitimate interest: without them the board gets flooded by one person.
+			Map tiles come from OpenStreetMap, so they see your IP just like any other website. Emails are
+			sent through Resend. My server and database are managed by a hosting provider. No one else
+			gets your data.
 		</p>
+
+		<h2 id="rights" class="lab">Your Rights</h2>
+
 		<p>
-			<strong>Who else sees anything.</strong> Map tiles come from OpenStreetMap, so your browser talks
-			to them directly and they see your IP like any site you visit. Emails go out through Resend. The
-			server and database sit with a hosting provider. That's it.
-		</p>
-		<p>
-			<strong>Your rights.</strong> You can ask for a copy of what's kept, a correction, or a
-			deletion. Your edit link deletes the ad on the spot. For anything else, or anything legal,
-			write to <a href="mailto:{CONTACT}">{CONTACT}</a>. If you think I've handled this badly, you
-			can complain to the Greek data protection authority at
+			You can ask for a copy of your data, a correction, or a deletion. You can also delete your ad
+			instantly using your unique link. For anything else, email me at
+			<a href="mailto:{CONTACT}">{CONTACT}</a>. If you feel I have handled a situation poorly, you
+			can contact the Greek data protection authority at
 			<a href="https://www.dpa.gr" target="_blank" rel="noopener noreferrer">dpa.gr</a>.
 		</p>
 
-		<h2 id="reports" class="lab">If you report an ad</h2>
+		<h2 id="reports" class="lab">How I handle reports</h2>
 
 		<p>
-			A person reads it. Not a filter, not a model, not a queue nobody opens. That person is me, and
-			I usually get to it the same day.
-		</p>
-		<p>
-			If the ad broke a rule it comes down. If it didn't it stays up, and reporting it again won't
-			change that. Either way the band never finds out who reported them. If there's more to say
-			than fits in a report, write to <a href="mailto:{CONTACT}">{CONTACT}</a>.
+			I read every report personally, usually on the same day. If an ad breaks a rule, I take it
+			down. If it doesn't, it stays up. The band will never know who reported them. If you need to
+			give more detail than the form allows, <a href="mailto:{CONTACT}">email me directly</a>.
 		</p>
 	</div>
 </div>
