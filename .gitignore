@@ -38,7 +38,6 @@ npm-debug.log*
 # app.css.
 /fonts/
 ### Capacitor ###
-# Native project + the webDir Capacitor copies the build into; both regenerate
+# Native project; regenerates
 # from `npx cap add android` / `npx cap sync`.
 android/
-capacitor-www/
