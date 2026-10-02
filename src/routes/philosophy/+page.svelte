@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Philosophy · Probes</title>
+	<title>Philosophy · Proba</title>
 	<meta name="description" content="Why there are no accounts, and why an ad dies after 14 days." />
 </svelte:head>
 
@@ -9,7 +9,7 @@
 
 	<div class="prose">
 		<p>
-			Probes (<i>PRO-ves</i>, the Greek word for rehearsals) replaces the story you posted at 2am.
+			Proba (<i>PRO-va</i>, the Greek word for rehearsal) replaces the story you posted at 2am.
 			You had to already follow the band, and you had to be looking that same day. The ad sits still
 			here instead, and it is searchable.
 		</p>

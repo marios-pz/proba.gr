@@ -45,7 +45,7 @@ async function main() {
 		throw new Error('DATABASE_URL is not set. Copy .env.example to .env and fill it in.');
 	}
 
-	console.log(c.bold('\n  probes  database bootstrap'));
+	console.log(c.bold('\n  proba  database bootstrap'));
 	log(c.dim(url.replace(/:\/\/([^:]+):[^@]+@/, '://$1:***@')));
 
 	const sql = postgres(url, { max: 1, onnotice: () => {} });

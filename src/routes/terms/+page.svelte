@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Terms and privacy · Probes</title>
+	<title>Terms and privacy · Proba</title>
 	<meta name="description" content="What the rules are, what is stored, and for how long." />
 </svelte:head>
 
@@ -17,7 +17,7 @@
 
 	<div class="prose">
 		<p>
-			Probes is a free noticeboard. I'm {OPERATOR} and I run it from Greece. A band posts what it's missing,
+			Proba is a free noticeboard. I'm {OPERATOR} and I run it from Greece. A band posts what it's missing,
 			someone who plays it gets in touch. No account, no fee.
 		</p>
 		<p>

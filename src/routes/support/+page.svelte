@@ -4,7 +4,7 @@
 
 	<div class="prose">
 		<p>
-			Probes exists so a band's "musicians wanted" post outlives a 24 hour story and can still be
+			Proba exists so a band's "musicians wanted" post outlives a 24 hour story and can still be
 			found, months later, by the right person in the right city. Posting an ad is free, browsing is
 			free, and there is no account and no fee to add either.
 		</p>

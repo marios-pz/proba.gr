@@ -18,9 +18,9 @@
 <div class="shell" onanimationend={clearVeil}>
 	<!-- The board still needs one h1 for search and for screen readers; it
 	     just isn't the thing you look at any more. -->
-	<h1 class="sr-only">Probes</h1>
+	<h1 class="sr-only">Proba</h1>
 	<div class="top">
-		<a class="mark" href="/support" aria-label="Probes, about and support">
+		<a class="mark" href="/support" aria-label="Proba, about and support">
 			<span aria-hidden="true">P</span>
 		</a>
 		<nav class="switch">

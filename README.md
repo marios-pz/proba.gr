@@ -1,4 +1,4 @@
-# probes
+# proba
 
 Standing "musicians wanted" ads. A band posts what it is missing and where;
 a musician filters by instrument and genre and contacts the band on the
@@ -196,7 +196,7 @@ before every start.
 2. **integration** - the same suite as above against a `postgres:18-alpine`
    service container, empty, one per run
 3. **image** - build, then Trivy for HIGH and CRITICAL with `--ignore-unfixed`,
-   then push to `ghcr.io/<owner>/probes`
+   then push to `ghcr.io/<owner>/proba`
 
 Nothing is pushed that has not been tested and scanned, and a pull request
 runs every step except the push. Images carry the OCI labels (`revision`,
@@ -238,7 +238,7 @@ Two guards worth knowing about:
 
 ```
 $ npm start
-  probes  database bootstrap
+  proba  database bootstrap
    extensions ok (pgcrypto, citext, cube, earthdistance, pg_trgm)
    database is empty, creating the schema from scratch
    applied 3 migrations: 0000_supreme_champions.sql, 0001_functions.sql, ...

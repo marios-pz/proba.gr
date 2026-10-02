@@ -114,7 +114,7 @@ jobs:
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.version=${{ github.ref_name }}
-            org.opencontainers.image.title=probes
+            org.opencontainers.image.title=proba
             org.opencontainers.image.description=Board where bands post who they are missing
             org.opencontainers.image.licenses=AGPL-3.0-or-later
 

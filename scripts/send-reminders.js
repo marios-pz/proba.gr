@@ -20,7 +20,7 @@ import { Resend } from 'resend';
 const DATABASE_URL = process.env.DATABASE_URL;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const ORIGIN = process.env.ORIGIN ?? 'http://localhost:3000';
-const FROM = process.env.MAIL_FROM ?? 'Probes <onboarding@resend.dev>';
+const FROM = process.env.MAIL_FROM ?? 'Proba <onboarding@resend.dev>';
 
 if (!DATABASE_URL) throw new Error('DATABASE_URL is not set');
 if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set');
