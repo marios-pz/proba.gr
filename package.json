@@ -1,0 +1,59 @@
+{
+	"name": "proba",
+	"version": "0.2.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "npm run db:bootstrap && node --env-file-if-exists=.env node_modules/.bin/vite dev",
+		"build": "vite build",
+		"preview": "node --env-file-if-exists=.env node_modules/.bin/vite preview",
+		"start": "npm run db:bootstrap && node --env-file-if-exists=.env build/index.js",
+		"db:bootstrap": "node --env-file-if-exists=.env scripts/bootstrap.js",
+		"db:generate": "node --env-file-if-exists=.env node_modules/.bin/drizzle-kit generate",
+		"db:studio": "node --env-file-if-exists=.env node_modules/.bin/drizzle-kit studio",
+		"send-reminders": "node --env-file-if-exists=.env scripts/send-reminders.js",
+		"seed-demo": "node --env-file-if-exists=.env scripts/seed-demo.js",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"prepare": "git config core.hooksPath .githooks || true",
+		"test": "node --test test/*.test.ts",
+		"test:integration": "node --test test/integration/*.integration.test.ts",
+		"predev": "npm test",
+		"prestart": "npm test"
+	},
+	"devDependencies": {
+		"@capacitor/android": "^8.5.2",
+		"@capacitor/cli": "^8.5.2",
+		"@electric-sql/pglite": "^0.5.8",
+		"@sveltejs/adapter-node": "^5.2.12",
+		"@sveltejs/kit": "^2.20.0",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@types/leaflet": "^1.9.22",
+		"@types/node": "^26.6.3",
+		"drizzle-kit": "^0.31.11",
+		"prettier": "^3.9.9",
+		"prettier-plugin-svelte": "^4.1.1",
+		"svelte": "^5.57.1",
+		"svelte-check": "^4.1.4",
+		"typescript": "^6.0.3",
+		"vite": "^8.3.1"
+	},
+	"dependencies": {
+		"@capacitor/core": "^8.5.2",
+		"@capacitor/geolocation": "^8.2.2",
+		"drizzle-orm": "^0.45.3",
+		"leaflet": "^1.9.4",
+		"postgres": "^3.4.5",
+		"resend": "^6.31.0"
+	},
+	"overrides": {
+		"@esbuild-kit/core-utils": {
+			"esbuild": "^0.25.4"
+		},
+		"cookie": "^0.7.0"
+	},
+	"allowScripts": {
+		"esbuild@0.28.2": true
+	}
+}

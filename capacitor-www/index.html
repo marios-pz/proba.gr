@@ -1,0 +1,12 @@
+<!doctype html>
+<!--
+  Never actually shown: capacitor.config.ts sets server.url, so the native
+  WebView loads the live app from there instead of any local bundle. This
+  directory exists only because Capacitor's CLI requires a webDir to copy
+  during `cap sync`/`cap add` — pointing it at the real SvelteKit build/
+  output made Android's asset merger choke on the .gz siblings adapter-node
+  generates for production (precompress: true, a real feature, not a bug —
+  see svelte.config.js). Keeping webDir separate and empty sidesteps that
+  without touching precompression.
+-->
+<title>Proba</title>

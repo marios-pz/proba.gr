@@ -1,0 +1,1 @@
+ALTER TYPE "public"."link_kind" ADD VALUE 'twitter' BEFORE 'youtube';

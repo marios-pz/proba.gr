@@ -1,0 +1,17 @@
+#!/bin/sh
+# Formats what you are about to commit, then stages the result. Only the
+# staged files, so a commit never picks up unrelated reformatting, and
+# never the whole tree, so it stays fast enough not to be disabled.
+#
+# Installed by `npm install` (the prepare script points core.hooksPath
+# here). Skip once with `git commit --no-verify`.
+set -e
+
+files=$(git diff --cached --name-only --diff-filter=ACM -z |
+	tr '\0' '\n' |
+	grep -E '\.(ts|js|mjs|svelte|json|md|css|yml|yaml)$' || true)
+
+[ -z "$files" ] && exit 0
+
+echo "$files" | xargs ./node_modules/.bin/prettier --ignore-unknown --write
+echo "$files" | xargs git add

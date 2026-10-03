@@ -1,0 +1,43 @@
+### AL ###
+#Template for AL projects for Dynamics 365 Business Central
+#launch.json folder
+.vscode/
+#Cache folder
+.alcache/
+#Symbols folder
+.alpackages/
+#Snapshots folder
+.snapshots/
+#Testing Output folder
+.output/
+#Extension App-file
+*.app
+#Rapid Application Development File
+rad.json
+#Translation Base-file
+*.g.xlf
+#License-files
+*.bclicense
+*.flf
+#Test results file
+TestResults.xml
+
+### Node / SvelteKit ###
+node_modules/
+.svelte-kit/
+build/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+
+# Full Maple Mono NF CN family (319MB, Nerd Font icons + CJK charset), kept
+# outside static/ on purpose: static/ is copied whole into the production
+# build, so anything raw in there would ship. This is source material only,
+# to subset from. The site ships static/fonts/maple-mono-web/ instead; see
+# app.css.
+/fonts/
+### Capacitor ###
+# Native project; regenerates
+# from `npx cap add android` / `npx cap sync`.
+android/

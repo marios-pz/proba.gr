@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # The Node dependencies (SvelteKit, Drizzle, etc).
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    groups:
+      # One PR for the routine bumps instead of a dozen, so they don't
+      # bury the ones worth reading individually.
+      minor-and-patch:
+        update-types: ['minor', 'patch']
+
+  # The node:24-alpine base image pinned in the Dockerfile.
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+
+  # actions/checkout, docker/build-push-action, etc in the workflows below.
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'monthly'

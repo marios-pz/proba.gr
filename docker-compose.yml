@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      # No password: matches the trust-auth DATABASE_URL in .env and in
+      # `app`'s DATABASE_URL below ("postgres://postgres@...", no password
+      # segment). Published only to 127.0.0.1 (see ports:), never to
+      # 0.0.0.0, so trust auth doesn't reach the rest of the LAN.
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      # Postgres 18's image lays data out under /var/lib/postgresql itself
+      # (pg_ctlcluster-style, versioned subdirs), not .../data as in <18.
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      # So a locally-run `vite dev` (outside Docker) can reach it at the
+      # DATABASE_URL in .env. Loopback-only: not reachable from the LAN.
+      - '127.0.0.1:5432:5432'
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://postgres@db:5432/postgres
+      # adapter-node checks the Origin header on form POSTs against this.
+      ORIGIN: ${ORIGIN:-http://localhost:3000}
+      PORT: 3000
+    ports:
+      - '3000:3000'
+
+volumes:
+  db-data:

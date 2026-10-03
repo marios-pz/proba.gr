@@ -1,0 +1,15 @@
+node_modules
+build
+.svelte-kit
+.git
+.env
+.env.*
+!.env.example
+npm-debug.log*
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Raw Maple Mono source (319MB); the site only ships the subset already
+# built into static/fonts/maple-mono-web/. See app.css.
+fonts/

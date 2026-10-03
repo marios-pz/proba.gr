@@ -1,0 +1,14 @@
+# Build output and things npm owns
+build
+.svelte-kit
+node_modules
+package-lock.json
+
+# src/app.css is hand-set: several declarations to a line, grouped by what
+# they do. Prettier would put every one on its own line and turn 600 lines
+# into 2000 for no gain.
+src/app.css
+
+# Not ours to reformat: generated SQL, vendored fonts, CC0 artwork.
+drizzle
+static

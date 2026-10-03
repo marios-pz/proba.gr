@@ -1,0 +1,1 @@
+ALTER TABLE "ad" ADD COLUMN "view_count" integer DEFAULT 0 NOT NULL;
